@@ -116,7 +116,6 @@
     &::after {
       opacity: 1;
       transform: scale(1);
-      animation: TextfieldIdenticator-enter 0.5s;
     }
 
     .Textfield-messages {
@@ -133,7 +132,6 @@
     &::after {
       opacity: 1;
       transform: scale(1);
-      animation: TextfieldIdenticator-enter 0.5s;
     }
 
     .Textfield-messages {
@@ -143,29 +141,6 @@
 
     .Textfield-message {
       transform: translateY(0);
-    }
-  }
-
-
-  /* Theme: default (animations) */
-
-  @keyframes TextfieldIdenticator-enter {
-    0%, 60%, 100% {
-      transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    }
-
-    0% {
-      opacity: 0;
-      transform: scale(0.2);
-    }
-
-    60% {
-      transform: scale(1.2);
-    }
-
-    100% {
-      opacity: 1;
-      transform: scale(1);
     }
   }
 }

@@ -109,9 +109,7 @@
   opacity: 1;
   -webkit-transform: scale(1);
       -ms-transform: scale(1);
-          transform: scale(1);
-  -webkit-animation: TextfieldIdenticator-enter 0.5s;
-          animation: TextfieldIdenticator-enter 0.5s; }
+          transform: scale(1); }
 .Textfield--default.is-blured.has-value .Textfield-messages {
   opacity: 1;
   max-height: 1.4em; }
@@ -124,9 +122,7 @@
   opacity: 1;
   -webkit-transform: scale(1);
       -ms-transform: scale(1);
-          transform: scale(1);
-  -webkit-animation: TextfieldIdenticator-enter 0.5s;
-          animation: TextfieldIdenticator-enter 0.5s; }
+          transform: scale(1); }
 .Textfield--default.is-blured.is-dirty.is-required.has-noValue .Textfield-messages {
   opacity: 1;
   max-height: 1.4em; }
@@ -134,39 +130,3 @@
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
           transform: translateY(0); }
-
-/* Theme: default (animations) */
-@-webkit-keyframes TextfieldIdenticator-enter {
-  0%, 60%, 100% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
-
-  0% {
-    opacity: 0;
-    -webkit-transform: scale(0.2);
-            transform: scale(0.2); }
-
-  60% {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2); }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: scale(1);
-            transform: scale(1); } }
-@keyframes TextfieldIdenticator-enter {
-  0%, 60%, 100% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
-
-  0% {
-    opacity: 0;
-    -webkit-transform: scale(0.2);
-            transform: scale(0.2); }
-
-  60% {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2); }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: scale(1);
-            transform: scale(1); } }
