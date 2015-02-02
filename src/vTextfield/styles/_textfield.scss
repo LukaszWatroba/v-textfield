@@ -1,0 +1,172 @@
+/***************************************
+  Textfield
+ ***************************************/
+
+
+.Textfield {
+  position: relative;
+  overflow: hidden;
+}
+
+.Textfield-label {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.Textfield-identicator {
+  display: inline-block;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.Textfield input {
+  width: 100%;
+}
+
+.Textfield-messages {
+  font-size:$textfield-messages-font-size;
+}
+
+
+@if $textfield-default-theme {
+  /* Theme: default
+   ***************************************/
+
+  .Textfield--default {
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 10;
+      top: 36px;
+      right: 6px;
+      width: 6px;
+      height: 6px;
+      pointer-events: none;
+      border-radius: 50%;
+      will-change: opacity, transform;
+      opacity: 0;
+      transform: scale(0.2);
+      transition: transform $textfield-transitions-duration, opacity $textfield-transitions-duration;
+    }
+
+    .Textfield-messages {
+      display: block;
+      opacity: 0;
+      max-height: 0;
+      will-change: opacity;
+      transition: max-height $textfield-transitions-duration, opacity $textfield-transitions-duration * 2;
+    }
+
+    .Textfield-message {
+      display: block;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-wrap: normal;
+      will-change: transform;
+      transform: translateY(15px);
+      transition: transform $textfield-transitions-duration;
+    }
+  }
+
+  .Textfield--default .Textfield-label::after {
+    content: attr(hint);
+    display: inline-block;
+    vertical-align: bottom;
+    float: right;
+    font-size: $textfield-hint-font-size;
+    font-style: $textfield-hint-font-style;
+    color: $textfield-hint-color;
+  }
+
+  .Textfield--default.Textfield--lg::after {
+    top: 40px;
+  }
+  .Textfield--default.Textfield--sm::after {
+    top: 34px;
+  }
+
+
+
+  /* States */
+
+  .Textfield--default.is-valid {
+    &::after {
+      background-color: $textfield-color-success;
+    }
+
+    .Textfield-messages {
+      color: $textfield-color-info;
+    }
+  }
+
+  .Textfield--default.is-invalid {
+    &::after {
+      background-color: $textfield-color-error;
+    }
+
+    .Textfield-messages {
+      color: $textfield-color-error;
+    }
+  }
+
+  .Textfield--default.is-blured.has-value {
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+      animation: TextfieldIdenticator-enter 0.5s;
+    }
+
+    .Textfield-messages {
+      opacity: 1;
+      max-height: $textfield-messages-line-height;    
+    }
+
+    .Textfield-message {
+      transform: translateY(0);
+    }
+  }
+
+  .Textfield--default.is-blured.is-dirty.is-required.has-noValue {
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+      animation: TextfieldIdenticator-enter 0.5s;
+    }
+
+    .Textfield-messages {
+      opacity: 1;
+      max-height: $textfield-messages-line-height;    
+    }
+
+    .Textfield-message {
+      transform: translateY(0);
+    }
+  }
+
+
+  /* Theme: default (animations) */
+
+  @keyframes TextfieldIdenticator-enter {
+    0%, 60%, 100% {
+      transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    0% {
+      opacity: 0;
+      transform: scale(0.2);
+    }
+
+    60% {
+      transform: scale(1.2);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
