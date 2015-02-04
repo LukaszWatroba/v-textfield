@@ -9,17 +9,20 @@ describe('v-textfield directive', function () {
   var generateTextfield = function (options) {
     var defaults = {
       type: 'text',
-      required: false
+      required: false,
+      placeholder: false
     };
 
     if (options) {
       angular.extend(defaults, options);
     }
 
-    var template = '<div v-textfield>\n';
+    var template = '<v-textfield>';
     template += '<input name="myTextfield" type="' + defaults.type + '" ng-model="model" v-textfield-input';
-    template += (defaults.required) ? ' required>\n' : '>\n';
-    template += '</div>';
+    template += (defaults.required) ? ' required>' : '';
+    template += (defaults.placeholder) ? ' placeholder="">' : '';
+    template += '>';
+    template += '</v-textfield>';
 
     textfield = $compile(template)(scope)
     input = textfield.find('input');
@@ -70,7 +73,7 @@ describe('v-textfield directive', function () {
   });
 
 
-  it('otherwise it should add `is-required` class', function() {
+  it('should add `is-required` class if input is required', function() {
     generateTextfield({ required: true });
 
     scope.$digest();
@@ -91,6 +94,25 @@ describe('v-textfield directive', function () {
 
     expect(textfield.hasClass('is-blured')).toBe(false);
     expect(textfield.hasClass('is-focused')).toBe(true);
+  });
+
+
+  it('should add `has-placeholder` class if input has placeholder attribute', function() {
+    generateTextfield({ placeholder: true });
+
+    scope.$digest();
+
+    expect(textfield.hasClass('has-placeholder')).toBe(true);
+  });
+
+
+  it('should add `has-noPlaceholder` class if input has no placeholder attribute', function() {
+    generateTextfield();
+
+    scope.$digest();
+
+    expect(textfield.hasClass('has-placeholder')).toBe(false);
+    expect(textfield.hasClass('has-noPlaceholder')).toBe(true);
   });
 
 });

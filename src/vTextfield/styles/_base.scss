@@ -1,0 +1,30 @@
+/* Base styles
+ ***************************************/
+
+
+v-textfield {
+  display: block;
+}
+
+v-textfield label {
+  display: block;
+
+  &::after {
+    content: attr(hint);
+    display: inline-block;
+    vertical-align: bottom;
+    float: right;
+  }
+}
+
+v-textfield input,
+v-textfield textarea {
+  display: block;
+  width: 100%;
+}
+
+v-textfield ng-messages,
+v-textfield ng-message {
+  display: block;
+}
+

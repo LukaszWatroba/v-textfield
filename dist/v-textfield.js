@@ -1,6 +1,6 @@
 /**
- * User-friendly form validation in AngularJS
- * @version v0.0.1
+ * User-friendly text fields in AngularJS
+ * @version v0.1.0
  * @link http://lukaszwatroba.github.io/v-textfield
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -15,19 +15,19 @@
 // Config
 angular.module('vTextfield.config', [])
   .constant('textfieldConfig', {
-    classes: {
-      states: {
-        focused: 'is-focused',
-        blured: 'is-blured',
-        valid: 'is-valid',
-        invalid: 'is-invalid',
-        dirty: 'is-dirty',
-        pristine: 'is-pristine',
-        required: 'is-required',
-        optional: 'is-optional',
-        hasValue: 'has-value',
-        hasNoValue: 'has-noValue'
-      }
+    states: {
+      focused: 'is-focused',
+      blured: 'is-blured',
+      valid: 'is-valid',
+      invalid: 'is-invalid',
+      dirty: 'is-dirty',
+      pristine: 'is-pristine',
+      required: 'is-required',
+      optional: 'is-optional',
+      hasValue: 'has-value',
+      hasNoValue: 'has-noValue',
+      hasPlaceholder: 'has-placeholder',
+      hasNoPlaceholder: 'has-noPlaceholder'
     }
   });
 
@@ -47,7 +47,7 @@ angular.module('vTextfield.directives')
   .directive('vTextfieldInput', vTextfieldInput);
 
 
-function vTextfieldInput (textfieldConfig) {
+function vTextfieldInput () {
     return {
       restrict: 'A',
       require: ['^vTextfield', 'ngModel'],
@@ -57,8 +57,8 @@ function vTextfieldInput (textfieldConfig) {
       link: function (scope, iElement, iAttrs, ctrls) {
         if ( !ctrls[0] && !ctrls[1] ) { return; }
 
-        var textfieldCtrl = ctrls[0];
-        var ngModelCtrl = ctrls[1];
+        var textfieldCtrl = ctrls[0],
+            ngModelCtrl = ctrls[1];
 
         ngModelCtrl.$formatters.push(function(value) {
           textfieldCtrl.setHasValue(isNotEmpty(value));
@@ -74,6 +74,8 @@ function vTextfieldInput (textfieldConfig) {
         } else {
           textfieldCtrl.setIsRequired(false);
         }
+
+        textfieldCtrl.setHasPlaceholder( angular.isDefined(iAttrs.placeholder) );
 
         scope.$watch(function () { return ngModelCtrl.$valid; }, function (value) {
           textfieldCtrl.setIsValid(value);
@@ -119,7 +121,6 @@ function vTextfieldInput (textfieldConfig) {
       }
     };
   }
-  vTextfieldInput.$inject = ['textfieldConfig'];
 
 
 
@@ -131,50 +132,63 @@ angular.module('vTextfield.directives')
 
 function vTextfieldDirective () {
   return {
-    restrict: 'AE',
+    restrict: 'E',
+    replace: true,
+    transclude: true,
     controller: vTextfieldController,
-    scope: {}
+    scope: {},
+    link: function (scope, iElement, iAttrs, ctrl, transclude) {
+      transclude(scope.$parent, function (clone) {
+        iElement.append(clone);
+      });
+    }
   };
 }
 
 
 function vTextfieldController ($scope, $element, textfieldConfig) {
-  var statesClasses = textfieldConfig.classes.states;
+  var states = textfieldConfig.states;
 
   this.setIsFocused = function(value) {
     $element
-      .toggleClass(statesClasses.focused, value)
-      .toggleClass(statesClasses.blured, !value);
+      .toggleClass(states.focused, value)
+      .toggleClass(states.blured, !value);
   };
 
   this.setHasValue = function (value) {
     $element
-      .toggleClass(statesClasses.hasValue, value)
-      .toggleClass(statesClasses.hasNoValue, !value);
+      .toggleClass(states.hasValue, value)
+      .toggleClass(states.hasNoValue, !value);
+  };
+
+  this.setHasPlaceholder = function (value) {
+    $element
+      .toggleClass(states.hasPlaceholder, value)
+      .toggleClass(states.hasNoPlaceholder, !value);
   };
 
   this.setIsRequired = function (value) {
     $element
-      .toggleClass(statesClasses.required, value)
-      .toggleClass(statesClasses.optional, !value);
+      .toggleClass(states.required, value)
+      .toggleClass(states.optional, !value);
   };
 
   this.setIsValid = function (value) {
     $element
-      .toggleClass(statesClasses.valid, value)
-      .toggleClass(statesClasses.invalid, !value);
+      .toggleClass(states.valid, value)
+      .toggleClass(states.invalid, !value);
   };
 
   this.setIsDirty = function (value) {
     $element
-      .toggleClass(statesClasses.dirty, value)
-      .toggleClass(statesClasses.pristine, !value);
+      .toggleClass(states.dirty, value)
+      .toggleClass(states.pristine, !value);
   };
 
   this.setIsTouched = function (value) {
     $element
-      .toggleClass(statesClasses.touched, value)
-      .toggleClass(statesClasses.untouched, !value);
+      .toggleClass(states.touched, value)
+      .toggleClass(states.untouched, !value);
   };
 }
 vTextfieldController.$inject = ['$scope', '$element', 'textfieldConfig'];

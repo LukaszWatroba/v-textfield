@@ -3,22 +3,23 @@
 // -------------------------------------
 
 
-$textfield-default-theme: true !default;
+$v-textfield-default-theme: true !default;
 
 
 // Textfield
 // -------------------------------------
 
-$textfield-color-info:    #2196F3 !default;
-$textfield-color-success: #4CAF50 !default;
-$textfield-color-error:   #F44336 !default;
+$v-textfield-spacing:       20px;
 
-$textfield-hint-font-size:  0.707em !default;
-$textfield-hint-font-style: italic !default;
-$textfield-hint-color:      #757575 !default;
+$v-textfield-color-info:      #2196F3 !default;
+$v-textfield-color-success:   #4CAF50 !default;
+$v-textfield-color-error:     #F44336 !default;
 
-$textfield-messages-font-size:    0.707em !default;
-$textfield-messages-line-height:  1.4em !default;
+$v-textfield-font-size-small:   0.707em !default;
+$v-textfield-hint-font-style:   italic !default;
+$v-textfield-hint-color:        #757575 !default;
 
-$textfield-transitions-duration:  0.25s !default;
+$v-textfield-border-radius:   2px !default;
+
+$v-textfield-transitions-duration:  0.25s !default;
 

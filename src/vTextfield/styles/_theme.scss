@@ -1,0 +1,147 @@
+@if $v-textfield-default-theme {
+  /* Theme: default
+   ***************************************/
+  
+
+  .vTextfield--default {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: $v-textfield-spacing;
+
+    label {
+      display: block;
+      margin-bottom: 2px;
+
+      &::after {
+        font-size: $v-textfield-font-size-small;
+        font-style: $v-textfield-hint-font-style;
+        color: $v-textfield-hint-color;
+      }
+    }
+
+    input {
+      box-sizing: border-box;
+      border: 1px solid #D8D8D8;
+      padding: 0;
+      position: relative;
+      line-height: normal;
+      padding: 5px;
+      background-color: #fff;
+      color: inherit;
+      border-radius: $v-textfield-border-radius;
+
+      transition: border-color $v-textfield-transitions-duration;
+
+      &:active,
+      &.is-active {
+        outline: 0;
+        background-image: none;
+      }
+
+      &:focus {
+        outline: 0;
+        border-color: $v-textfield-color-info;
+      }
+
+      &:disabled,
+      &.is-disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 0.6;
+      }
+    }
+
+    ng-messages {
+      margin-top: 2px;
+      font-size: $v-textfield-font-size-small;
+      opacity: 0;
+      max-height: 0px;
+      will-change: opacity;
+      transition: max-height $v-textfield-transitions-duration, opacity $v-textfield-transitions-duration * 2;
+    }
+    
+    ng-message {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.4em;
+      white-space: nowrap;
+      word-wrap: normal;
+      will-change: transform;
+      transform: translateY(15px);
+      transition: transform $v-textfield-transitions-duration;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 10;
+      top: 36px;
+      right: 6px;
+      width: 6px;
+      height: 6px;
+      pointer-events: none;
+      border-radius: 50%;
+      will-change: opacity, transform;
+      opacity: 0;
+      transform: scale(0.2);
+      transition: transform $v-textfield-transitions-duration, opacity $v-textfield-transitions-duration;
+    }
+  }
+  
+
+  /* States */
+
+  .vTextfield--default.is-valid {
+    &::after {
+      background-color: $v-textfield-color-success;
+    }
+
+    ng-messages {
+      color: $v-textfield-color-info;
+    }
+  }
+
+  .vTextfield--default.is-invalid {
+    &::after {
+      background-color: $v-textfield-color-error;
+    }
+
+    ng-messages {
+      color: $v-textfield-color-error;
+    }
+  }
+
+  .vTextfield--default.is-blured.has-value {
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    ng-messages {
+      opacity: 1;
+      max-height: 1.4em;    
+    }
+
+    ng-message {
+      transform: translateY(0);
+    }
+  }
+
+  .vTextfield--default.is-blured.is-dirty.is-required.has-noValue {
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    ng-messages {
+      opacity: 1;
+      max-height: 1.4em;    
+    }
+
+    ng-message {
+      transform: translateY(0);
+    }
+  }
+}
+

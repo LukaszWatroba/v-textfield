@@ -4,14 +4,16 @@
 
 
 /**
- * Example HTML: input
+ * Example HTML:
  *
-  <div class="Textfield" v-textfield>
+  <v-textfield class="Textfield--default">
     <label for="[id]">Your name</label>
     <input id="[id]" name="[name]" type="[type]" ng-model="[model]" v-textfield-input>
-  </div>
+  </v-textfield>
  */
 
 
 @import 'settings';
-@import 'textfield';
+@import 'base';
+@import 'theme';
+

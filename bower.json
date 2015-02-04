@@ -1,6 +1,6 @@
 {
   "name": "v-textfield",
-  "description": "User-friendly form validation in AngularJS",
+  "description": "User-friendly text fields in AngularJS",
   "keywords": [
     "AngularJS",
     "input",

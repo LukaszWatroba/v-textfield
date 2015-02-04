@@ -7,50 +7,63 @@ angular.module('vTextfield.directives')
 
 function vTextfieldDirective () {
   return {
-    restrict: 'AE',
+    restrict: 'E',
+    replace: true,
+    transclude: true,
     controller: vTextfieldController,
-    scope: {}
+    scope: {},
+    link: function (scope, iElement, iAttrs, ctrl, transclude) {
+      transclude(scope.$parent, function (clone) {
+        iElement.append(clone);
+      });
+    }
   };
 }
 
 
 function vTextfieldController ($scope, $element, textfieldConfig) {
-  var statesClasses = textfieldConfig.classes.states;
+  var states = textfieldConfig.states;
 
   this.setIsFocused = function(value) {
     $element
-      .toggleClass(statesClasses.focused, value)
-      .toggleClass(statesClasses.blured, !value);
+      .toggleClass(states.focused, value)
+      .toggleClass(states.blured, !value);
   };
 
   this.setHasValue = function (value) {
     $element
-      .toggleClass(statesClasses.hasValue, value)
-      .toggleClass(statesClasses.hasNoValue, !value);
+      .toggleClass(states.hasValue, value)
+      .toggleClass(states.hasNoValue, !value);
+  };
+
+  this.setHasPlaceholder = function (value) {
+    $element
+      .toggleClass(states.hasPlaceholder, value)
+      .toggleClass(states.hasNoPlaceholder, !value);
   };
 
   this.setIsRequired = function (value) {
     $element
-      .toggleClass(statesClasses.required, value)
-      .toggleClass(statesClasses.optional, !value);
+      .toggleClass(states.required, value)
+      .toggleClass(states.optional, !value);
   };
 
   this.setIsValid = function (value) {
     $element
-      .toggleClass(statesClasses.valid, value)
-      .toggleClass(statesClasses.invalid, !value);
+      .toggleClass(states.valid, value)
+      .toggleClass(states.invalid, !value);
   };
 
   this.setIsDirty = function (value) {
     $element
-      .toggleClass(statesClasses.dirty, value)
-      .toggleClass(statesClasses.pristine, !value);
+      .toggleClass(states.dirty, value)
+      .toggleClass(states.pristine, !value);
   };
 
   this.setIsTouched = function (value) {
     $element
-      .toggleClass(statesClasses.touched, value)
-      .toggleClass(statesClasses.untouched, !value);
+      .toggleClass(states.touched, value)
+      .toggleClass(states.untouched, !value);
   };
 }
 vTextfieldController.$inject = ['$scope', '$element', 'textfieldConfig'];

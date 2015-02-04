@@ -1,4 +1,6 @@
-# User-friendly form validation in AngularJS
+# User-friendly text fields in AngularJS
+
+You can use it for showing/hiding validation messages, error/success input indicators, or interactive [Float Labels](http://bradfrost.com/blog/post/float-label-pattern/).
 
 
 ## Demos
@@ -16,17 +18,47 @@
 ## Usage
 
 ```html
-<form name="myForm" novalidate>
+<v-textfield class="Textfield--default">
+  <label hint="Optional">Name</label>
+  <input name="myName" type="text" ng-model="model.myName" v-textfield-input>
+</v-textfield>
 
-  <div class="Textfield Textfield--default" v-textfield>
-    <label class="Textfield-label">Email</label>
-    <input class="Input Input--default" name="myEmail" type="email" ng-model="model.myEmail" required v-textfield-input>
+<v-textfield class="Textfield--default">
+  <label>Email</label>
+  <input name="myEmail" type="email" ng-model="model.myEmail" required v-textfield-input>
 
-    <ul class="Textfield-messages" ng-messages="myForm.myEmail.$error">
-      <li class="Textfield-message" ng-message="email">Please enter a valid email address.</li>
-      <li class="Textfield-message" ng-message="required">You did not enter a email address.</li>
-    </ul>
-  </div>
+  <ng-messages for="myForm.myEmail.$error">
+    <ng-message when="email">Please enter a valid email address.</ng-message>
+    <ng-message when="required">You did not enter a email address.</ng-message>
+  </ng-messages>
+</v-textfield>
 
-</form>
+<v-textfield class="vTextfield--default">
+  <label>Password</label>
+  <input name="myPassword" type="password" ng-model="model.myPassword" ng-minlength="6" required v-textfield-input>
+
+  <ng-messages for="myForm.myPassword.$error">
+    <ng-message when="minlength">Your password is too short.</ng-message>
+    <ng-message when="required">Please enter a password.</ng-message>
+  </ng-messages>
+</v-textfield>
 ```
+
+
+## How it works
+
+It basicly adds the following classes to the `v-textfield` element:
+
+- `is-focused`
+- `is-blured`
+- `is-valid`
+- `is-invalid`
+- `is-dirty`
+- `is-pristine`
+- `is-required`
+- `is-optional`
+- `has-value`
+- `has-noValue`
+- `has-placeholder`
+- `has-noPlaceholder`
+

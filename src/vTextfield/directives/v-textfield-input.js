@@ -5,7 +5,7 @@ angular.module('vTextfield.directives')
   .directive('vTextfieldInput', vTextfieldInput);
 
 
-function vTextfieldInput (textfieldConfig) {
+function vTextfieldInput () {
     return {
       restrict: 'A',
       require: ['^vTextfield', 'ngModel'],
@@ -15,8 +15,8 @@ function vTextfieldInput (textfieldConfig) {
       link: function (scope, iElement, iAttrs, ctrls) {
         if ( !ctrls[0] && !ctrls[1] ) { return; }
 
-        var textfieldCtrl = ctrls[0];
-        var ngModelCtrl = ctrls[1];
+        var textfieldCtrl = ctrls[0],
+            ngModelCtrl = ctrls[1];
 
         ngModelCtrl.$formatters.push(function(value) {
           textfieldCtrl.setHasValue(isNotEmpty(value));
@@ -32,6 +32,8 @@ function vTextfieldInput (textfieldConfig) {
         } else {
           textfieldCtrl.setIsRequired(false);
         }
+
+        textfieldCtrl.setHasPlaceholder( angular.isDefined(iAttrs.placeholder) );
 
         scope.$watch(function () { return ngModelCtrl.$valid; }, function (value) {
           textfieldCtrl.setIsValid(value);
@@ -77,5 +79,4 @@ function vTextfieldInput (textfieldConfig) {
       }
     };
   }
-  vTextfieldInput.$inject = ['textfieldConfig'];
 

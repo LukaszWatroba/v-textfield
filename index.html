@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="vTextfield">
+    <meta name="description" content="vTextfield - User-friendly text fields in AngularJS.">
     <meta name="author" content="Łukasz Wątroba">
 
     <title>vTextfield</title>
@@ -37,7 +37,7 @@
           <svg class="u-inlineBlock" width="58px" height="58px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54"><g><path fill="#4CAF50" d="M3.1,27.9c0,0,10.2-24.1,11.6-27.2c0.2-0.5,0.6-0.8,1.2-0.6c0.5,0.1,0.8,0.7,1.5,2.2c1.3,2.9,18,37.2,18.7,38.6c0.8,1.6,1,2.6,0.7,3.4c-0.3,0.6-1,1.1-1.8,1.4c-2.3,0.9-20.3,7.8-21.5,8.3c-0.7,0.3-0.8-0.4-1.4-1.7C11.6,51,3.7,32.1,3.1,30.7C2.5,29.3,3.1,27.9,3.1,27.9z"/><path fill="#2196F3" d="M50.9,17.3c-0.3-0.3-0.4-0.4-0.7-0.2c-0.3,0.1-11.5,8.6-16.8,12.5c2.7,5.5,4.7,9.7,5,10.2c0.4,0.8,0.8,1.7,1,2.6c0.1-0.2,0.2-0.3,0.3-0.5c0.9-1.8,11.3-23.4,11.5-23.8C51.3,17.7,51.2,17.7,50.9,17.3z"/></g></svg>
           <h2 class="u-marginTs">vTextfield</h2>
 
-          <p>User-friendly form validation in AngularJS</p>
+          <p>User-friendly text fields in AngularJS.</p>
         </div>
         
         <hr>
@@ -48,36 +48,30 @@
         
         <form class="Form u-paddingHm" name="myForm" novalidate>
 
-          <div class="Form-item">
-            <div class="Textfield Textfield--default" v-textfield>
-              <label class="Textfield-label" hint="Optional">Name</label>
-              <input class="Input Input--default" name="myName" type="text" ng-model="model.myName" v-textfield-input>
-            </div>
-          </div>
+          <v-textfield class="vTextfield--default">
+            <label hint="Optional">Name</label>
+            <input name="myName" type="text" ng-model="model.myName" v-textfield-input>
+          </v-textfield>
 
-          <div class="Form-item">
-            <div class="Textfield Textfield--default" v-textfield>
-              <label class="Textfield-label">Email</label>
-              <input class="Input Input--default" name="myEmail" type="email" ng-model="model.myEmail" required v-textfield-input>
+          <v-textfield class="vTextfield--default">
+            <label>Email</label>
+            <input name="myEmail" type="email" ng-model="model.myEmail" required v-textfield-input>
 
-              <ul class="Textfield-messages" ng-messages="myForm.myEmail.$error">
-                <li class="Textfield-message" ng-message="email">Please enter a valid email address.</li>
-                <li class="Textfield-message" ng-message="required">You did not enter a email address.</li>
-              </ul>
-            </div>
-          </div>
+            <ng-messages for="myForm.myEmail.$error">
+              <ng-message when="email">Please enter a valid email address.</ng-message>
+              <ng-message when="required">You did not enter a email address.</ng-message>
+            </ng-messages>
+          </v-textfield>
+        
+          <v-textfield class="vTextfield--default">
+            <label>Password</label>
+            <input name="myPassword" type="password" ng-model="model.myPassword" ng-minlength="6" required v-textfield-input>
 
-          <div class="Form-item">
-            <div class="Textfield Textfield--default" v-textfield>
-              <label class="Textfield-label">Password</label>
-              <input class="Input Input--default" name="myPassword" type="password" ng-model="model.myPassword" ng-minlength="6" required v-textfield-input>
-
-              <ul class="Textfield-messages" ng-messages="myForm.myPassword.$error">
-                <li class="Textfield-message" ng-message="minlength">Your password is too short.</li>
-                <li class="Textfield-message" ng-message="required">Please enter a password.</li>
-              </ul>
-            </div>
-          </div>
+            <ng-messages for="myForm.myPassword.$error">
+              <ng-message when="minlength">Your password is too short.</ng-message>
+              <ng-message when="required">Please enter a password.</ng-message>
+            </ng-messages>
+          </v-textfield>
 
           <div class="u-paddingVs u-textCenter">
             <button class="Button Button--default" type="submit">Create Account</button>
@@ -97,7 +91,7 @@
           <svg class="u-inlineBlock u-alignMiddle" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 512 512">
             <path fill="#F06292" d="M450.703,124.225C410.233,41.419,287.288,47.821,256,119.967c-31.288-72.146-154.233-78.548-194.703,4.257C13.59,221.837,124.309,314.82,256,448.014C387.691,314.82,498.41,221.837,450.703,124.225z"/>
           </svg>
-          by <a href="http://lukaszwatroba.com" class="u-linkClean">Łukasz Wątroba</a>
+          by <a href="http://lukaszwatroba.com" target="_blank" class="u-linkClean">Łukasz Wątroba</a>
           </small>
         </div>
 
@@ -107,7 +101,7 @@
 
     
     <!-- Fork me on GitHub ribbon -->
-    <a href="https://github.com/LukaszWatroba/v-textfield"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    <a href="https://github.com/LukaszWatroba/v-textfield" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 
 
   </body>
