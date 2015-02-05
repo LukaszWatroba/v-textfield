@@ -1,6 +1,6 @@
 /**
  * User-friendly text fields in AngularJS
- * @version v0.1.0
+ * @version v0.1.1
  * @link http://lukaszwatroba.github.io/v-textfield
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT

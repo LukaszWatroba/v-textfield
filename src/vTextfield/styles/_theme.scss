@@ -127,7 +127,8 @@
       transform: translateY(0);
     }
   }
-
+  
+  form.ng-submitted .vTextfield--default.is-required.has-noValue,
   .vTextfield--default.is-blured.is-dirty.is-required.has-noValue {
     &::after {
       opacity: 1;

@@ -10,7 +10,7 @@
 
     .controller('MainController', function ($scope) {
       $scope.model = {
-        myName: 'Łukasz',
+        myName: 'John',
         myEmail: '',
         myPassword: ''
       };

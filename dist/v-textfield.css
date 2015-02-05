@@ -1,6 +1,6 @@
 /**
  * User-friendly text fields in AngularJS
- * @version v0.1.0
+ * @version v0.1.1
  * @link http://lukaszwatroba.github.io/v-textfield
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -133,15 +133,15 @@ v-textfield ng-messages, v-textfield ng-message {
       -ms-transform: translateY(0);
           transform: translateY(0); }
 
-.vTextfield--default.is-blured.is-dirty.is-required.has-noValue::after {
+form.ng-submitted .vTextfield--default.is-required.has-noValue::after, .vTextfield--default.is-blured.is-dirty.is-required.has-noValue::after {
   opacity: 1;
   -webkit-transform: scale(1);
       -ms-transform: scale(1);
           transform: scale(1); }
-.vTextfield--default.is-blured.is-dirty.is-required.has-noValue ng-messages {
+form.ng-submitted .vTextfield--default.is-required.has-noValue ng-messages, .vTextfield--default.is-blured.is-dirty.is-required.has-noValue ng-messages {
   opacity: 1;
   max-height: 1.4em; }
-.vTextfield--default.is-blured.is-dirty.is-required.has-noValue ng-message {
+form.ng-submitted .vTextfield--default.is-required.has-noValue ng-message, .vTextfield--default.is-blured.is-dirty.is-required.has-noValue ng-message {
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
           transform: translateY(0); }
