@@ -55,7 +55,7 @@
 
           <v-textfield class="vTextfield--default">
             <label>Email</label>
-            <input name="myEmail" type="email" ng-model="model.myEmail" required v-textfield-input>
+            <input name="myEmail" type="email" ng-model="model.myEmail" placeholder="user@mydomain.com" required v-textfield-input>
 
             <ng-messages for="myForm.myEmail.$error">
               <ng-message when="email">Please enter a valid email address.</ng-message>
