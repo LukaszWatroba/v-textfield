@@ -1,6 +1,6 @@
 # User-friendly text fields in AngularJS
 
-You can use vTextfild for showing/hiding validation messages, error/success input indicators, or interactive [Float Labels](http://bradfrost.com/blog/post/float-label-pattern/). It basicly adds the following classes to the `v-textfield` directive:
+You can use vTextfild to show (hide) validation messages, error/success input indicators, or interactive [Float Labels](http://bradfrost.com/blog/post/float-label-pattern/). It basically adds the following classes to the `v-textfield` directive:
 
 - `is-focused`
 - `is-blured`
