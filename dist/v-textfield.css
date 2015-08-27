@@ -1,6 +1,6 @@
 /**
  * User-friendly text fields in AngularJS
- * @version v0.1.1
+ * @version v0.1.2
  * @link http://lukaszwatroba.github.io/v-textfield
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -60,7 +60,8 @@ v-textfield ng-messages, v-textfield ng-message {
     background-color: #fff;
     color: inherit;
     border-radius: 2px;
-    transition: border-color 0.25s; }
+    -webkit-transition: border-color 0.25s;
+            transition: border-color 0.25s; }
     .vTextfield--default input:active, .vTextfield--default input.is-active {
       outline: 0;
       background-image: none; }
@@ -77,7 +78,8 @@ v-textfield ng-messages, v-textfield ng-message {
     opacity: 0;
     max-height: 0px;
     will-change: opacity;
-    transition: max-height 0.25s, opacity 0.5s; }
+    -webkit-transition: max-height 0.25s, opacity 0.5s;
+            transition: max-height 0.25s, opacity 0.5s; }
   .vTextfield--default ng-message {
     max-width: 100%;
     overflow: hidden;
@@ -89,8 +91,8 @@ v-textfield ng-messages, v-textfield ng-message {
     -webkit-transform: translateY(15px);
         -ms-transform: translateY(15px);
             transform: translateY(15px);
-    transition: -webkit-transform 0.25s;
-    transition: transform 0.25s; }
+    -webkit-transition: -webkit-transform 0.25s;
+            transition: transform 0.25s; }
   .vTextfield--default::after {
     content: '';
     position: absolute;
@@ -106,8 +108,8 @@ v-textfield ng-messages, v-textfield ng-message {
     -webkit-transform: scale(0.2);
         -ms-transform: scale(0.2);
             transform: scale(0.2);
-    transition: -webkit-transform 0.25s, opacity 0.25s;
-    transition: transform 0.25s, opacity 0.25s; }
+    -webkit-transition: -webkit-transform 0.25s, opacity 0.25s;
+            transition: transform 0.25s, opacity 0.25s; }
 
 /* States */
 .vTextfield--default.is-valid::after {
