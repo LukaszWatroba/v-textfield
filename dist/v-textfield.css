@@ -1,6 +1,6 @@
 /**
  * User-friendly text fields in AngularJS
- * @version v0.1.2
+ * @version v0.1.4
  * @link http://lukaszwatroba.github.io/v-textfield
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -30,11 +30,13 @@ v-textfield label {
     vertical-align: bottom;
     float: right; }
 
-v-textfield input, v-textfield textarea {
+v-textfield input,
+v-textfield textarea {
   display: block;
   width: 100%; }
 
-v-textfield ng-messages, v-textfield ng-message {
+v-textfield ng-messages,
+v-textfield ng-message {
   display: block; }
 
 /* Theme: default
@@ -89,7 +91,6 @@ v-textfield ng-messages, v-textfield ng-message {
     word-wrap: normal;
     will-change: transform;
     -webkit-transform: translateY(15px);
-        -ms-transform: translateY(15px);
             transform: translateY(15px);
     -webkit-transition: -webkit-transform 0.25s;
             transition: transform 0.25s; }
@@ -106,7 +107,6 @@ v-textfield ng-messages, v-textfield ng-message {
     will-change: opacity, transform;
     opacity: 0;
     -webkit-transform: scale(0.2);
-        -ms-transform: scale(0.2);
             transform: scale(0.2);
     -webkit-transition: -webkit-transform 0.25s, opacity 0.25s;
             transition: transform 0.25s, opacity 0.25s; }
@@ -114,36 +114,41 @@ v-textfield ng-messages, v-textfield ng-message {
 /* States */
 .vTextfield--default.is-valid::after {
   background-color: #4CAF50; }
+
 .vTextfield--default.is-valid ng-messages {
   color: #2196F3; }
 
 .vTextfield--default.is-invalid::after {
   background-color: #F44336; }
+
 .vTextfield--default.is-invalid ng-messages {
   color: #F44336; }
 
 .vTextfield--default.is-blured.has-value::after {
   opacity: 1;
   -webkit-transform: scale(1);
-      -ms-transform: scale(1);
           transform: scale(1); }
+
 .vTextfield--default.is-blured.has-value ng-messages {
   opacity: 1;
   max-height: 1.4em; }
+
 .vTextfield--default.is-blured.has-value ng-message {
   -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
           transform: translateY(0); }
 
-form.ng-submitted .vTextfield--default.is-required.has-noValue::after, .vTextfield--default.is-blured.is-dirty.is-required.has-noValue::after {
+form.ng-submitted .vTextfield--default.is-required.has-noValue::after,
+.vTextfield--default.is-blured.is-dirty.is-required.has-noValue::after {
   opacity: 1;
   -webkit-transform: scale(1);
-      -ms-transform: scale(1);
           transform: scale(1); }
-form.ng-submitted .vTextfield--default.is-required.has-noValue ng-messages, .vTextfield--default.is-blured.is-dirty.is-required.has-noValue ng-messages {
+
+form.ng-submitted .vTextfield--default.is-required.has-noValue ng-messages,
+.vTextfield--default.is-blured.is-dirty.is-required.has-noValue ng-messages {
   opacity: 1;
   max-height: 1.4em; }
-form.ng-submitted .vTextfield--default.is-required.has-noValue ng-message, .vTextfield--default.is-blured.is-dirty.is-required.has-noValue ng-message {
+
+form.ng-submitted .vTextfield--default.is-required.has-noValue ng-message,
+.vTextfield--default.is-blured.is-dirty.is-required.has-noValue ng-message {
   -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
           transform: translateY(0); }
